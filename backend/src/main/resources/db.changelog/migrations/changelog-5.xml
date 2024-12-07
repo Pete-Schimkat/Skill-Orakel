@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="4" author="JLI">
+        <sql>
+            CREATE TYPE language_level AS ENUM('ELEMENTARKENNTNISSE', 'MITTELSTUFE', 'VERHANDLUNGSSICHER', 'ERSTSPRACHE')
+        </sql>
+        <createTable tableName="language_knowledge">
+            <column name="skill_profile_id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="language_id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="language_level" type="language_level">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

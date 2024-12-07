@@ -1,0 +1,27 @@
+/* CONTENTS
+----------------------------------
+
+-- base imports
+-- component imports
+-- layout imports
+*/
+
+/* base import */
+@import './base/reset';
+
+/* component imports */ 
+@import './components/tabPanel';
+@import './components/languages';
+@import './components/industryKnowledge';
+@import './components/qualifications';
+@import './components/navbar';
+@import './components/buttons';
+@import './components/basicInfo';
+@import './components/sidebar';
+@import './components/workExperience';
+@import './components/projectModal';
+@import './components/projects';
+
+
+/* layout */
+@import './layout/layout';

@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as *;
+
+.css-1160xiw-MuiPaper-root-MuiDrawer-paper{
+    width: 25%;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+    ul{
+        list-style: none;
+        
+        a:hover {
+            color: rgb(0, 102, 204);
+            padding-left: .75rem;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0.75rem;
+        transition: padding-left .75s;
+    }
+
+    a:visited{
+        color: inherit;
+    }
+
+    .sidebar-navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%
+    }
+
+    .header-logo-container {
+        display: flex;
+        gap: 1rem;
+        padding: 10px;
+        text-decoration: none;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+}

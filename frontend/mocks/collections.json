@@ -1,0 +1,18 @@
+[
+  {
+    "id": "skills", 
+    "routes": ["get-Categories:success", "add-skill:success", "update-skill:success", "delete-skill:success"]
+  },
+  {
+    "id": "projekte",
+    "routes": ["get-projects:all-projects-success"]
+  },
+  {
+    "id": "languages",
+    "routes": ["get-sprachen:success"]
+  },
+  {
+    "id": "profil",
+    "routes": ["get-profil:get-profil-success"]
+  }
+]

@@ -1,0 +1,33 @@
+.qualifications-section {
+  display: flex;
+  flex-direction: column;
+  margin-block: 10px;
+
+  .qualification-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-block: 1rem;
+
+    .qualification-input-field {
+      display: flex;
+      justify-content: baseline;
+      flex-grow: 1;
+    }
+
+    .button-confirm {
+      align-self: center;
+    }
+
+    button {
+      align-self: auto;
+      justify-content: center;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+    justify-content: center;
+  }
+}

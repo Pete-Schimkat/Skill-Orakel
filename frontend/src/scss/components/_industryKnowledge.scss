@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as *;
+
+#branchen-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.branchen-grid-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.add-branch {
+  display: flex;
+  align-items: center;
+}
+
+.branchen-button {
+  align-self: flex-start;
+}

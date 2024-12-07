@@ -1,0 +1,21 @@
+#profile-basic-info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 70%;
+
+    .name-info{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+
+        .name-input-field {
+          flex-basis: 50%;
+        }
+    }
+
+    .mail-info{
+      display: flex;
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "skill-orakel3",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "watch": "vite build --watch",
+    "lint": "eslint src/ --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest",
+    "mocks": "mocks-server",
+    "generate-client-code": "openapi-generator-cli generate -i ../backend/target/openapi/skillorakel-api.json -g typescript-fetch -o src/generated"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.0.13",
+    "@mui/icons-material": "^5.16.5",
+    "@mui/material": "^5.16.5",
+    "@mui/x-date-pickers": "^7.12.0",
+    "dayjs": "^1.11.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.77.8",
+    "skill-orakel3": "file:"
+  },
+  "devDependencies": {
+    "@mocks-server/main": "^1.3.0",
+    "@openapitools/openapi-generator-cli": "^2.14.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "jsdom": "^24.1.1",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.13.0",
+    "vite": "^5.3.4",
+    "vitest": "^2.0.5"
+  }
+}

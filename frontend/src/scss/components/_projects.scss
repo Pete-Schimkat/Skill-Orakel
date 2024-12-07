@@ -1,0 +1,50 @@
+#projectSection {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#firstProjectRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    max-height: fit-content;
+    width: auto;
+}
+
+.projectAutocomplete {
+    flex-grow: 0.9 !important; 
+}
+
+.project-date-section {
+    display: flex;
+    gap: 1rem;
+
+    .MuiFormControl-root {
+        justify-content: space-evenly;
+        width: 100%;    
+        flex-basis: 50%;
+    }
+}
+
+#secondProjectRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-top: 1em;
+
+    * {
+        flex-grow: 0.92;
+    }
+}
+
+#deleteButton,
+#addProjectButton {
+    max-width: fit-content;
+    background-color: #1976d2;
+    color: white;
+}
+
+.project-description-row {
+    display: flex;
+    margin-top: 1em;
+}

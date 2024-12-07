@@ -1,0 +1,58 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="17" author="PSC">
+        <createTable tableName="project">
+            <column name="project_id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="title" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="customer" type="varchar">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="18" author="PSC">
+        <createTable tableName="project_assignment">
+            <column name="project_id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="project_assignment_id" />
+            </column>
+            <column name="skill_profile_id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="project_assignment_id" />
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="responsability" type="varchar">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="19" author="PSC">
+        <createTable tableName="project_assignment_skill">
+            <column name="project_id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="project_assignment_skill_id" />
+            </column>
+            <column name="skill_profile_id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="project_assignment_skill_id" />
+            </column>
+            <column name="skill_id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="project_assignment_skill_id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

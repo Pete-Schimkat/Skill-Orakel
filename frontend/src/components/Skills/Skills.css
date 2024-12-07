@@ -1,0 +1,85 @@
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  height: 100%;
+}
+
+.MuiBox-root .css-19kzrtu {
+  margin: 0;
+  padding: 0;
+}
+
+#skill {
+  #add-button {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 15%;
+    height: 20%;
+  }
+
+  #skills {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    #list-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 1rem;
+
+      #delete-button {
+        width: 5%;
+        height: 5%;
+        margin: 0rem 0.5rem;
+      }
+
+      #category-select {
+        text-align: top;
+        max-height: 3.3rem;
+        margin: 0rem 0.5rem;
+      }
+
+      #skill-liste {
+        flex-basis: 100%;
+        margin: 0rem 0.5rem;
+
+        #chips-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          #chip {
+            flex-direction: row;
+            margin: 0.1rem 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  #skill-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 500px;
+
+    .MuiButtonBase-root.MuiChip-root.MuiChip-filled.MuiChip-sizeMedium.MuiChip-colorDefault.MuiChip-deletable.MuiChip-deletableColorDefault.MuiChip-filledDefault.MuiAutocomplete-tag.MuiAutocomplete-tagSizeMedium.css-38raov-MuiButtonBase-root-MuiChip-root {
+      flex-direction: row;
+    }
+
+    #modal-autocomplete {
+      display: flex;
+      flex-direction: row;
+    }
+
+    #buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+}

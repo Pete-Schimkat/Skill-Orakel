@@ -1,0 +1,171 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert into basic info" author="MAS">
+        <insert tableName="employee_basic_info">
+            <column name="basic_info_id" value="e1750f44-c689-46a6-826b-56fd3efd0ed8"/>
+            <column name="first_name" value="Heinz"/>
+            <column name="last_name" value="Testmeister"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="10" author="JLI">
+        <insert tableName="skill_profile">
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="basic_info_id" value="e1750f44-c689-46a6-826b-56fd3efd0ed8"/>
+            <column name="oauth2_subject_identifier" value="xeXzdawmDkaZ4UdGqdlWYGTyUaLOo_-19z21vb1b2BQ"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="2" author="JLI">
+        <insert tableName="work_experience">
+            <column name="work_experience_id" value="03062495-c6c3-40d6-867b-60450c19cf15"/>
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="employer" value="Dataciders InMediasP"/>
+            <column name="description" value="Matse"/>
+            <column name="start_date" value="2023-10-07"/>
+            <column name="end_date" value="2020-10-07"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into industry" author="MAS">
+        <insert tableName="industry">
+            <column name="industry_id" value="0ab136c6-9019-4e92-965a-0c3110d05918"/>
+            <column name="name" value="Luft- und Raumfahrtindustrie"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into industry_knowledge" author="MAS">
+        <insert tableName="industry_knowledge">
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b" />
+            <column name="industry_id" value="0ab136c6-9019-4e92-965a-0c3110d05918"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="12" author="MAS">
+        <insert tableName="qualification">
+            <column name="qualification_id" value="ff138791-fddc-4513-89b3-8d752155cd0b"/>
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b" />
+            <column name="title" value="Offical Java Syntactical Sugar Connaisseur"/>
+            <column name="issuer" value="Java Island's Java Foundation"/>
+            <column name="description" value="Distinguish all the java beans from regular brews"/>
+            <column name="date" value="2022-06-02"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="8" author="JLI">
+        <insert tableName="language">
+            <column name="language_id" value="8ea2cc35-bc9e-4eb1-ad72-b288a5b2bbfe"/>
+            <column name="language" value="Deutsch"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="JLI">
+        <insert tableName="language_knowledge">
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="language_id" value="8ea2cc35-bc9e-4eb1-ad72-b288a5b2bbfe"/>
+            <column name="language_level" value="MITTELSTUFE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into project" author="JLI">
+        <insert tableName="project">
+            <column name="project_id" value="6c325811-02bd-4f57-a267-29defcb43527"/>
+            <column name="title" value="Skillorakel"/>
+            <column name="description" value="Drei Idioten und ein Backend"/>
+            <column name="customer" value="wir selbst"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into project assignment" author="JLI">
+        <insert tableName="project_assignment">
+            <column name="project_id" value="6c325811-02bd-4f57-a267-29defcb43527"/>
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="responsability" value="In charge of untangling legacy spaghetti code"/>
+            <column name="start_date" value="2024-10-10"/>
+            <column name="end_date" value="2024-10-31"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into category" author="JLI">
+        <insert tableName="category">
+            <column name="category_id" value="3023e0c1-391f-475b-a9ab-054e20568a35"/>
+            <column name="name" value="Big Decimal"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into skill" author="JLI">
+        <insert tableName="skill">
+            <column name="skill_id" value="73aabba3-287b-403e-875d-2aad15e0945a"/>
+            <column name="name" value="More time to drink coffee"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="insert into skill category" author="JLI">
+        <insert tableName="skill_category">
+            <column name="category_id" value="3023e0c1-391f-475b-a9ab-054e20568a35"/>
+            <column name="skill_id" value="73aabba3-287b-403e-875d-2aad15e0945a"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into project assignment skill" author="JLI">
+        <insert tableName="project_assignment_skill">
+            <column name="project_id" value="6c325811-02bd-4f57-a267-29defcb43527"/>
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="skill_id" value="73aabba3-287b-403e-875d-2aad15e0945a"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into employee skill" author="JLI">
+        <insert tableName="employee_skill">
+            <column name="skill_profile_id" value="9483a127-d4ba-4f97-b5da-eec97c86036b"/>
+            <column name="skill_id" value="73aabba3-287b-403e-875d-2aad15e0945a"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert into industries" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Automobilindustrie"/>
+            <column name="industry_id" value="e7007a0a-1aa0-45b2-8c4f-dd22ed69b593"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries1" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Maschine und Anlagenbau"/>
+            <column name="industry_id" value="abc986d2-0ed2-4096-b034-47c94d68ad92"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries2" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Informationstechnik"/>
+            <column name="industry_id" value="19b8168a-d2ef-485f-b9b2-b9ff97d1dd0e"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries4" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Hausgeräteindustrie"/>
+            <column name="industry_id" value="42ebcfdd-c4b1-4652-bcde-9fb74380fc16"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries5" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Zulieferindustrie"/>
+            <column name="industry_id" value="285533bb-3e1d-4c74-80a9-0b19b01fdb50"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries6" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Schienenfahrzeugindustrie"/>
+            <column name="industry_id" value="b5ccb9b0-764d-4b2c-9f68-8ffc40397d08"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert into industries7" author="JLI+MAS">
+        <insert tableName="industry">
+            <column name="name" value="Nutzfahrzeugindustrie"/>
+            <column name="industry_id" value="02f3e43f-820f-4c7d-b2ef-59b5dba34b07"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

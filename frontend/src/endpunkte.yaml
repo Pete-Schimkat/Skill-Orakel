@@ -1,0 +1,741 @@
+---
+components:
+  schemas:
+    basicInformation:
+      properties:
+        email:
+          example: masmuth@inmediasp.de
+          format: email
+          type: string
+        firstName:
+          example: Malte
+          type: string
+        lastName:
+          example: Asmuth
+          type: string
+      type: object
+    categories:
+      properties:
+        id:
+          example: 1
+          type: number
+        name:
+          example: frontend
+          type: string
+        skills:
+          items:
+            $ref: "#/components/schemas/skill"
+          type: array
+      type: object
+    industryKnowledge:
+      properties:
+        id:
+          type: integer
+        name:
+          example: Automobilbranche
+          type: string
+      type: object
+    project:
+      properties:
+        customer:
+          example: irgendwas mit autos
+          type: string
+        description:
+          example: Spannendes Softwareprojekt, alles wirklich spannend :)
+          type: string
+        id:
+          example: 15
+          type: integer
+        skills:
+          items:
+            $ref: "#/components/schemas/skill"
+          type: array
+        title:
+          example: abc4df
+          type: string
+      type: object
+    projectAssignment:
+      properties:
+        endDate:
+          format: date
+          type: string
+        id:
+          example: 332
+          type: integer
+        profilId:
+          example: 4023
+          type: integer
+        projektId:
+          example: 203230203
+          type: integer
+        skills:
+          items:
+            $ref: "#/components/schemas/skill"
+          type: array
+        startDate:
+          format: date
+          type: string
+      type: object
+    qualification:
+      properties:
+        issuer:
+          example: inMediasP
+          type: string
+        ausstellungsdate:
+          example: 01.01.2022
+          format: date
+          type: string
+        description:
+          example: Mathematisch-Technischer Softwareentwickler
+          type: string
+      type: object
+    skill:
+      properties:
+        id:
+          type: integer
+        name:
+          example: React.js
+          type: string
+      type: object
+    skill-profile:
+      properties:
+        basicInformation:
+          items:
+            $ref: "#/components/schemas/basicInformation"
+          type: array
+        beruflicher-werdegang:
+          items:
+            $ref: "#/components/schemas/werdegang"
+          type: array
+        branchenkenntnisse:
+          items:
+            $ref: "#/components/schemas/industryKnowledge"
+          type: array
+        id:
+          example: 1A
+          type: string
+        projekte:
+          items:
+            $ref: "#/components/schemas/project"
+          type: array
+        qualifications:
+          items:
+            $ref: "#/components/schemas/qualification"
+          type: array
+        skills:
+          items:
+            $ref: "#/components/schemas/skill"
+          type: array
+        sprachen:
+          items:
+            $ref: "#/components/schemas/sprache"
+          type: array
+      type: object
+    sprache:
+      properties:
+        kenntnisse:
+          example: verhandlungssicher
+          type: string
+        sprache:
+          example: deutsch
+          type: string
+      type: object
+    werdegang:
+      properties:
+        arbeitgeber:
+          example: microsoft
+          type: string
+        description:
+          example: softwareentwickler
+          type: string
+        endDate:
+          example: 01.01.2021
+          format: date
+          type: string
+        startDate:
+          example: 01.01.2019
+          format: date
+          type: string
+      type: object
+      xml:
+        name: profile
+info:
+  title: Skill Orakel
+  version: 1.0.11
+openapi: 3.0.3
+paths:
+  /categories:
+    get:
+      description: ""
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/categories"
+                type: array
+          description: successful operation
+      summary: Get list of all categories
+      tags:
+        - categories
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+              required:
+                - name
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: Add a new category
+      tags:
+        - categories
+  /categories/{id}:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: successful operation
+        "404":
+          description: skill not found
+      summary: delete skill by id
+      tags:
+        - categories
+    put:
+      description: ""
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+              required:
+                - name
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: update category
+      tags:
+        - categories
+  /project-assignments:
+    get:
+      description: ""
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/projectAssignment"
+                type: array
+          description: successful operation
+      summary: Get list of all project assignments
+      tags:
+        - project assignments
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                endDate:
+                  format: date
+                  type: string
+                profilId:
+                  type: integer
+                projektId:
+                  type: integer
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+                startDate:
+                  format: date
+                  type: string
+              required:
+                - projektId
+                - profilId
+                - startDate
+                - endDate
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful
+      summary: Create a new project
+      tags:
+        - project assignments
+  /project-assignments/{project-id}:
+    get:
+      parameters:
+        - in: path
+          name: project-id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/projectAssignment"
+                type: array
+          description: successful
+        "404":
+          description: project assignment not found
+      summary: Get project assignments by project ID
+      tags:
+        - project assignments
+
+  /project-assignment/{profile-id}:
+    get:
+      parameters:
+        - in: path
+          name: profile-id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/projectAssignment"
+                type: array
+          description: successful
+        "404":
+          description: project assignment not found
+      summary: Get project assignments by profile ID
+      tags:
+        - project assignments
+
+  /project-assignments/{id}:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+        "404":
+          description: project assignment not found
+      summary: Delete project assignment
+      tags:
+        - project assignments
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/projectAssignment"
+          description: successful
+        "404":
+          description: project assignment not found
+      summary: Get project assignment with ID
+      tags:
+        - project assignments
+    put:
+      description: ""
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                endDate:
+                  format: date
+                  type: string
+                profilId:
+                  type: integer
+                projektId:
+                  type: integer
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+                startDate:
+                  format: date
+                  type: string
+              required:
+                - projektId
+                - profilId
+                - startDate
+                - endDate
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: edit existing project assignment
+      tags:
+        - project assignments
+  /projects:
+    get:
+      description: ""
+      parameters: []
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/project"
+                type: array
+          description: successful operation
+      summary: Get list of all available projects
+      tags:
+        - projects
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                customer:
+                  type: string
+                description:
+                  type: string
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+                title:
+                  type: string
+              required:
+                - title
+                - description
+                - customer
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful
+      summary: Create a new project
+      tags:
+        - projects
+  /projects/{id}:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+        "404":
+          description: project not found
+      summary: Delete a project
+      tags:
+        - projects
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/project"
+                type: array
+          description: successful
+        "404":
+          description: project not found
+      summary: Get project with ID
+      tags:
+        - projects
+    put:
+      description: ""
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                customer:
+                  type: string
+                description:
+                  type: string
+                skillIds:
+                  items:
+                    type: number
+                  type: array
+                title:
+                  type: string
+              required:
+                - title
+                - description
+                - customer
+                - skillIds
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: Add a new project or edit an existing project
+      tags:
+        - projects
+  /skill-profiles:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/skill-profile"
+        description: create or update an existent profile
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/skill-profile"
+          description: successful operation
+      summary: create skill-profile
+      tags:
+        - skill profiles
+  /skill-profiles/{id}:
+    delete:
+      description: This can only be done by the logged in profile.
+      operationId: deleteprofile
+      parameters:
+        - description: The name that needs to be deleted
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "400":
+          description: Invalid username supplied
+        "404":
+          description: profile not found
+      summary: Delete profile
+      tags:
+        - skill profiles
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/skill-profile"
+          description: successful operation
+        "404":
+          description: profile not found
+      summary: Get skill-profile with id
+      tags:
+        - skill profiles
+    put:
+      parameters:
+        - description: ""
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/skill-profile"
+        description: create or update an existing profile
+      responses:
+        default:
+          description: successful operation
+      summary: Create or update skill profile
+      tags:
+        - skill profiles
+  /skill-profiles/{id}/download:
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: project
+          required: false
+          schema:
+            items:
+              type: integer
+            type: array
+        - in: query
+          name: skill-categories
+          required: false
+          schema:
+            items:
+              type: integer
+            type: array
+        - in: query
+          name: format
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "404":
+          description: profile not found
+  /skills:
+    get:
+      description: ""
+      operationId: listSkillCategories
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/skill"
+                type: array
+          description: successful operation
+      summary: Get list of all available skills
+      tags:
+        - skills
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                categoriesIds:
+                  items:
+                    type: number
+                  type: array
+                name:
+                  type: string
+              required:
+                - name
+                - categoriesIds
+                - skillId
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: Add a new skill
+      tags:
+        - skills
+  /skills/{id}:
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: successful operation
+        "404":
+          description: skill not found
+      summary: delete skill by id
+      tags:
+        - skills
+    put:
+      description: ""
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                categoriesIds:
+                  items:
+                    type: number
+                  type: array
+                name:
+                  type: string
+              required:
+                - name
+                - categoriesIds
+              type: object
+      responses:
+        default:
+          description: successful operation
+      summary: update skill
+      tags:
+        - skills
+tags:
+  - description: Profile management
+    name: profile
+  - description: Skill-Profile der Mitarbeitenden
+    name: skill profiles
+  - description: Skills der Mitarbeitenden
+    name: skills
+  - description: Projekte der Firma
+    name: projects
+  - description: Projektzugehoerigkeiten der Mitarbeitenden
+    name: project assignments
+  - description: Categories der Skills
+    name: categories

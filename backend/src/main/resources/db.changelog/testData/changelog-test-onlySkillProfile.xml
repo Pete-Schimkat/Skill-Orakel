@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert into basic info" author="MAS">
+        <insert tableName="employee_basic_info">
+            <column name="basic_info_id" value="8a7a21c2-bd7f-4af2-ad43-69e7647d1813"/>
+            <column name="first_name" value="Heinz"/>
+            <column name="last_name" value="Testmeister"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="10" author="JLI">
+        <insert tableName="skill_profile">
+            <column name="skill_profile_id" value="8c454a23-c445-4061-8282-a48a09cb4a2e"/>
+            <column name="basic_info_id" value="8a7a21c2-bd7f-4af2-ad43-69e7647d1813"/>
+            <column name="oauth2_subject_identifier" value="xeXzdawmDkaZ4UdGqdlWYGTyUaLOo_-19z21vb1b2BQ"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

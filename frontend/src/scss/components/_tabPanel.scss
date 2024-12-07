@@ -1,0 +1,33 @@
+.tab-bar-top {
+    display: flex;
+    flex-direction: column;
+    justify-self: top;
+    position: sticky;
+    top: 0px;
+}
+
+.tab-bar-navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.tab-nav-element:hover {
+    color: rgb(25, 118, 210);
+}
+
+.tabpanel {
+    /* Not preferred but it fixes the problem with the shrinking tab bar*/
+    width: 1000px;
+
+    div:first-child{
+        display: flex;
+        flex-direction: column;
+
+        section {
+            margin-bottom: 1rem;
+        }
+    }
+}
